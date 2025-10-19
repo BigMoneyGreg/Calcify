@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>UK Take-Home Pay Calculator 2025</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="../scripts/takehome.js" defer></script>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -19,14 +20,31 @@
 
   <main class="max-w-xl mx-auto mt-10 p-6 bg-white rounded-2xl shadow">
     <h1 class="text-2xl font-bold mb-4">UK Take-Home Pay Calculator (2025)</h1>
+
     <label for="salary" class="block mb-2 font-medium">Annual Salary (£)</label>
     <input id="salary" type="number" class="border rounded w-full p-2 mb-4" placeholder="e.g. 40000">
 
-    <button onclick="calculate()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+    <label for="pension" class="block mb-2 font-medium">Pension Contribution (%)</label>
+    <input id="pension" type="number" class="border rounded w-full p-2 mb-4" placeholder="e.g. 5">
+
+    <label for="studentLoan" class="block mb-2 font-medium">Student Loan Plan</label>
+    <select id="studentLoan" class="border rounded w-full p-2 mb-4">
+      <option value="none">None</option>
+      <option value="plan1">Plan 1</option>
+      <option value="plan2">Plan 2</option>
+      <option value="plan4">Plan 4</option>
+      <option value="postgrad">Postgraduate</option>
+    </select>
+
+    <button onclick="calculate()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 w-full">
       Calculate
     </button>
 
-    <div id="result" class="mt-4 text-lg font-semibold"></div>
+    <div id="result" class="mt-6 text-lg font-semibold"></div>
+
+    <div class="mt-8">
+      <canvas id="breakdownChart" height="200"></canvas>
+    </div>
   </main>
 </body>
 </html>
