@@ -36,13 +36,13 @@
       <option value="postgrad">Postgraduate</option>
     </select>
 
-    <button onclick="calculate()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 w-full">
+    <button id="calcBtn" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 w-full">
       Calculate
     </button>
 
     <div id="result" class="mt-6 text-lg font-semibold"></div>
 
-    <div class="mt-8">
+    <div id="chart-container" class="mt-8 hidden">
       <canvas id="breakdownChart" height="200"></canvas>
     </div>
   </main>
