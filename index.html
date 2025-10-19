@@ -4,18 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calcify</title>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class'
+    }
+  </script>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="scripts/tabs.js" defer></script>
   <script src="scripts/settings.js" defer></script>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-200">
 
-  <nav class="bg-blue-700 text-white p-4 shadow-md flex justify-between items-center">
+  <nav class="bg-blue-700 text-white dark:bg-gray-800 p-4 shadow-md flex justify-between items-center">
     <a href="/" class="font-bold text-xl">Calcify</a>
-    <button id="theme-toggle" class="ml-4 px-3 py-1 border rounded bg-gray-200 text-gray-800 dark:bg-gray-800 dark:text-gray-200">
+    <button id="theme-toggle" class="ml-4 px-3 py-1 border rounded bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200">
       🌙 / ☀️
     </button>
-  </nav>
+  </nav>  
 
   <main class="max-w-5xl mx-auto mt-10 p-6 bg-white rounded-2xl shadow">
     <h1 class="text-3xl font-bold mb-6">Welcome to the Calcify 🇬🇧</h1>
