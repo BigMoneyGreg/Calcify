@@ -5,32 +5,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>UK Calculators Hub</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="scripts/tabs.js" defer></script>
 </head>
 <body class="bg-gray-50 text-gray-800">
+
   <nav class="bg-blue-700 text-white p-4 shadow-md">
     <div class="max-w-5xl mx-auto flex justify-between">
       <a href="/" class="font-bold text-xl">UK Calculators Hub</a>
-      <div class="space-x-4">
-        <a href="/index.html" class="hover:underline">Home</a>
-        <a href="/calculators/takehome.html" class="hover:underline">Take-Home Pay</a>
-      </div>
     </div>
   </nav>
 
-  <main class="max-w-4xl mx-auto mt-10 p-6 bg-white rounded-2xl shadow">
-    <h1 class="text-3xl font-bold mb-4">Welcome to the UK Calculators Hub 🇬🇧</h1>
-    <p class="mb-6 text-gray-700">
-      A collection of simple, accurate calculators and tools for everyday life in the UK.
-    </p>
+  <main class="max-w-5xl mx-auto mt-10 p-6 bg-white rounded-2xl shadow">
+    <h1 class="text-3xl font-bold mb-6">Welcome to the UK Calculators Hub 🇬🇧</h1>
+    <p class="mb-6 text-gray-700">Select a category below to find calculators:</p>
 
-    <h2 class="text-2xl font-semibold mb-3">Popular Tools</h2>
-    <ul class="list-disc list-inside space-y-2">
-      <li><a href="/calculators/takehome.html" class="text-blue-600 hover:underline">UK Take-Home Pay Calculator</a></li>
-    </ul>
+    <!-- Tabs -->
+    <div class="flex space-x-2 mb-6">
+      <button class="tab-btn bg-blue-600 text-white px-4 py-2 rounded" data-tab="finance">Finance</button>
+      <button class="tab-btn bg-gray-200 text-gray-800 px-4 py-2 rounded" data-tab="everyday">Everyday</button>
+      <button class="tab-btn bg-gray-200 text-gray-800 px-4 py-2 rounded" data-tab="lifestyle">Lifestyle</button>
+    </div>
+
+    <!-- Tab content -->
+    <div id="finance" class="tab-content">
+      <ul class="list-disc list-inside space-y-2">
+        <li><a href="/calculators/takehome.html" class="text-blue-600 hover:underline">Take-Home Pay Calculator</a></li>
+        <li><a href="/calculators/mortgage.html" class="text-blue-600 hover:underline">Mortgage Calculator</a></li>
+      </ul>
+    </div>
+
+    <div id="everyday" class="tab-content hidden">
+      <ul class="list-disc list-inside space-y-2">
+        <li><a href="/calculators/date-diff.html" class="text-blue-600 hover:underline">Date Difference Calculator</a></li>
+      </ul>
+    </div>
+
+    <div id="lifestyle" class="tab-content hidden">
+      <ul class="list-disc list-inside space-y-2">
+        <li><a href="/calculators/bmi.html" class="text-blue-600 hover:underline">BMI Calculator</a></li>
+      </ul>
+    </div>
+
   </main>
 
   <footer class="text-center text-sm text-gray-500 mt-12 p-4">
-    © <span id="year"></span> UK Calculators Hub. Built for learning and fun.
+    © <span id="year"></span> UK Calculators Hub
   </footer>
 
   <script>
