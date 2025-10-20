@@ -3,126 +3,162 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calcify</title>
-
+  <title>Calcify | The All-in-One Calculator Hub</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="scripts/tabs.js" defer></script>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-gray-50 text-gray-800 font-sans">
 
+  <!-- Navbar -->
   <nav class="bg-blue-700 text-white p-4 shadow-md">
-    <div class="max-w-5xl mx-auto flex justify-between">
-      <a href="/" class="font-bold text-xl">UK Calculators Hub</a>
+    <div class="max-w-6xl mx-auto flex justify-between items-center">
+      <a href="/" class="font-bold text-2xl tracking-tight">Calcify 🇬🇧</a>
+      <span class="hidden sm:block text-sm opacity-80">All Your Calculations in One Place</span>
     </div>
   </nav>
 
-  <main class="max-w-5xl mx-auto mt-10 p-6 bg-white rounded-2xl shadow">
-    <h1 class="text-3xl font-bold mb-6">Welcome to the Calcify 🇬🇧</h1>
-    <p class="mb-6 text-gray-700">Select a category below to find calculators:</p>
+  <!-- Main -->
+  <main class="max-w-6xl mx-auto mt-10 p-8 bg-white rounded-3xl shadow-lg">
+    <h1 class="text-3xl font-bold mb-4">Welcome to Calcify</h1>
+    <p class="mb-8 text-gray-600 text-lg">Choose a category to find the tool you need — from finance to fitness and beyond.</p>
 
     <!-- Tabs -->
-    <div class="flex flex-wrap gap-2 mb-6">
-      <button class="tab-btn bg-blue-600 text-white px-4 py-2 rounded" data-tab="finance">Finance</button>
-      <button class="tab-btn bg-gray-200 text-gray-800 px-4 py-2 rounded" data-tab="everyday">Everyday</button>
-      <button class="tab-btn bg-gray-200 text-gray-800 px-4 py-2 rounded" data-tab="lifestyle">Lifestyle</button>
-      <button class="tab-btn bg-gray-200 text-gray-800 px-4 py-2 rounded" data-tab="travel">Travel</button>
-      <button class="tab-btn bg-gray-200 text-gray-800 px-4 py-2 rounded" data-tab="shopping">Shopping</button>
-      <button class="tab-btn bg-gray-200 text-gray-800 px-4 py-2 rounded" data-tab="health">Health</button>
-      <button class="tab-btn bg-gray-200 text-gray-800 px-4 py-2 rounded" data-tab="education">Education</button>
-      <button class="tab-btn bg-gray-200 text-gray-800 px-4 py-2 rounded" data-tab="work">Work</button>
-      <button class="tab-btn bg-gray-200 text-gray-800 px-4 py-2 rounded" data-tab="entertainment">Entertainment</button>
-      <button class="tab-btn bg-gray-200 text-gray-800 px-4 py-2 rounded" data-tab="miscellaneous">Miscellaneous</button>
+    <div class="flex flex-wrap gap-2 mb-8">
+      <button class="tab-btn bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium" data-tab="finance">Finance</button>
+      <button class="tab-btn bg-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-medium" data-tab="science">Science</button>
+      <button class="tab-btn bg-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-medium" data-tab="math">Math</button>
+      <button class="tab-btn bg-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-medium" data-tab="health">Health</button>
+      <button class="tab-btn bg-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-medium" data-tab="everyday">Everyday</button>
+      <button class="tab-btn bg-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-medium" data-tab="cooking">Cooking</button>
+      <button class="tab-btn bg-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-medium" data-tab="education">Education</button>
+      <button class="tab-btn bg-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-medium" data-tab="tech">Technology</button>
+      <button class="tab-btn bg-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-medium" data-tab="misc">Misc</button>
     </div>
 
-    <!-- Tab content -->
+    <!-- Finance -->
     <div id="finance" class="tab-content">
-      <ul class="list-disc list-inside space-y-2">
-        <li><a href="calculators/takehome.html" class="text-blue-600 hover:underline">Take-Home Pay Calculator</a></li>
-        <li><a href="calculators/mortgage.html" class="text-blue-600 hover:underline">Mortgage Calculator</a></li>
-        <li><a href="calculators/savings.html" class="text-blue-600 hover:underline">Savings Growth Calculator</a></li>
-        <li><a href="calculators/loan.html" class="text-blue-600 hover:underline">Loan Repayment Calculator</a></li>
-      </ul>
+      <h2 class="text-xl font-semibold mb-4">Finance & Business Calculators</h2>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <a href="calculators/takehome.html" class="block p-4 rounded-xl border border-gray-200 bg-gray-50 hover:bg-blue-50 hover:border-blue-400 transition text-blue-700 font-medium text-center shadow-sm">Take-Home Pay</a>
+        <a href="calculators/mortgage.html" class="calc-card">Mortgage</a>
+        <a href="calculators/savings.html" class="calc-card">Savings Growth</a>
+        <a href="calculators/loan.html" class="calc-card">Loan Repayment</a>
+        <a href="calculators/inflation.html" class="calc-card">Inflation</a>
+        <a href="calculators/investment.html" class="calc-card">Investment ROI</a>
+        <a href="calculators/vat.html" class="calc-card">VAT / GST</a>
+        <a href="calculators/breakeven.html" class="calc-card">Break-Even Point</a>
+        <a href="calculators/payroll.html" class="calc-card">Payroll Estimator</a>
+      </div>
     </div>
 
-    <div id="everyday" class="tab-content hidden">
-      <ul class="list-disc list-inside space-y-2">
-        <li><a href="calculators/date-diff.html" class="text-blue-600 hover:underline">Date Difference Calculator</a></li>
-        <li><a href="calculators/unit-converter.html" class="text-blue-600 hover:underline">Unit Converter</a></li>
-        <li><a href="calculators/currency.html" class="text-blue-600 hover:underline">Currency Converter</a></li>
-        <li><a href="calculators/timer.html" class="text-blue-600 hover:underline">Timer</a></li>
-      </ul>
+    <!-- Science -->
+    <div id="science" class="tab-content hidden">
+      <h2 class="text-xl font-semibold mb-4">Science & Engineering Tools</h2>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <a href="calculators/unit-converter.html" class="calc-card">Physics Unit Converter</a>
+        <a href="calculators/ohmslaw.html" class="calc-card">Ohm's Law</a>
+        <a href="calculators/resistor.html" class="calc-card">Resistor Color Code</a>
+        <a href="calculators/gaslaw.html" class="calc-card">Gas Law (PV=nRT)</a>
+        <a href="calculators/density.html" class="calc-card">Density</a>
+        <a href="calculators/torque.html" class="calc-card">Torque</a>
+      </div>
     </div>
 
-    <div id="lifestyle" class="tab-content hidden">
-      <ul class="list-disc list-inside space-y-2">
-        <li><a href="calculators/bmi.html" class="text-blue-600 hover:underline">BMI Calculator</a></li>
-        <li><a href="calculators/calorie.html" class="text-blue-600 hover:underline">Calorie Calculator</a></li>
-        <li><a href="calculators/bodyfat.html" class="text-blue-600 hover:underline">Body Fat Calculator</a></li>
-        <li><a href="calculators/idealweight.html" class="text-blue-600 hover:underline">Ideal Weight Calculator</a></li>
-      </ul>
+    <!-- Math -->
+    <div id="math" class="tab-content hidden">
+      <h2 class="text-xl font-semibold mb-4">Math & Geometry</h2>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <a href="calculators/percent.html" class="calc-card">Percentage</a>
+        <a href="calculators/average.html" class="calc-card">Average/Mean</a>
+        <a href="calculators/quadratic.html" class="calc-card">Quadratic Solver</a>
+        <a href="calculators/geometry.html" class="calc-card">Area & Volume</a>
+        <a href="calculators/matrix.html" class="calc-card">Matrix Solver</a>
+        <a href="calculators/logarithm.html" class="calc-card">Logarithm/Exponent</a>
+      </div>
     </div>
 
-    <div id="travel" class="tab-content hidden">
-      <ul class="list-disc list-inside space-y-2">
-        <li><a href="calculators/placeholder.html" class="text-blue-600 hover:underline">Fuel Cost Calculator (Coming Soon)</a></li>
-        <li><a href="calculators/placeholder.html" class="text-blue-600 hover:underline">Trip Distance/Time Calculator (Coming Soon)</a></li>
-        <li><a href="calculators/placeholder.html" class="text-blue-600 hover:underline">Taxi Fare Calculator (Coming Soon)</a></li>
-      </ul>
-    </div>
-
-    <div id="shopping" class="tab-content hidden">
-      <ul class="list-disc list-inside space-y-2">
-        <li><a href="calculators/placeholder.html" class="text-blue-600 hover:underline">VAT Calculator (Coming Soon)</a></li>
-        <li><a href="calculators/placeholder.html" class="text-blue-600 hover:underline">Discount Calculator (Coming Soon)</a></li>
-        <li><a href="calculators/placeholder.html" class="text-blue-600 hover:underline">Price per Unit Calculator (Coming Soon)</a></li>
-      </ul>
-    </div>
-
+    <!-- Health -->
     <div id="health" class="tab-content hidden">
-      <ul class="list-disc list-inside space-y-2">
-        <li><a href="calculators/placeholder.html" class="text-blue-600 hover:underline">Water Intake Calculator (Coming Soon)</a></li>
-        <li><a href="calculators/placeholder.html" class="text-blue-600 hover:underline">Heart Rate Zones (Coming Soon)</a></li>
-        <li><a href="calculators/placeholder.html" class="text-blue-600 hover:underline">Sleep Calculator (Coming Soon)</a></li>
-      </ul>
+      <h2 class="text-xl font-semibold mb-4">Health & Fitness</h2>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <a href="calculators/bmi.html" class="calc-card">BMI</a>
+        <a href="calculators/bmr.html" class="calc-card">BMR & TDEE</a>
+        <a href="calculators/bodyfat.html" class="calc-card">Body Fat %</a>
+        <a href="calculators/heartzones.html" class="calc-card">Heart Rate Zones</a>
+        <a href="calculators/water.html" class="calc-card">Water Intake</a>
+        <a href="calculators/sleep.html" class="calc-card">Sleep Schedule</a>
+      </div>
     </div>
 
+    <!-- Everyday -->
+    <div id="everyday" class="tab-content hidden">
+      <h2 class="text-xl font-semibold mb-4">Everyday Calculators</h2>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <a href="calculators/date-diff.html" class="calc-card">Date Difference</a>
+        <a href="calculators/tip.html" class="calc-card">Tip Split</a>
+        <a href="calculators/bill.html" class="calc-card">Bill Splitter</a>
+        <a href="calculators/fuel.html" class="calc-card">Fuel Cost</a>
+        <a href="calculators/electricity.html" class="calc-card">Electricity Cost</a>
+        <a href="calculators/timer.html" class="calc-card">Countdown Timer</a>
+      </div>
+    </div>
+
+    <!-- Cooking -->
+    <div id="cooking" class="tab-content hidden">
+      <h2 class="text-xl font-semibold mb-4">Cooking & Food</h2>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <a href="calculators/ingredient-converter.html" class="calc-card">Ingredient Converter</a>
+        <a href="calculators/temperature.html" class="calc-card">Temperature Converter</a>
+        <a href="calculators/recipe-scaler.html" class="calc-card">Recipe Scaler</a>
+        <a href="calculators/calories.html" class="calc-card">Nutrition/Calories</a>
+        <a href="calculators/abv.html" class="calc-card">Alcohol % (ABV)</a>
+        <a href="calculators/bakers.html" class="calc-card">Baker’s Percentage</a>
+      </div>
+    </div>
+
+    <!-- Education -->
     <div id="education" class="tab-content hidden">
-      <ul class="list-disc list-inside space-y-2">
-        <li><a href="calculators/placeholder.html" class="text-blue-600 hover:underline">GPA Calculator (Coming Soon)</a></li>
-        <li><a href="calculators/placeholder.html" class="text-blue-600 hover:underline">Exam Score Converter (Coming Soon)</a></li>
-        <li><a href="calculators/placeholder.html" class="text-blue-600 hover:underline">Study Hours Tracker (Coming Soon)</a></li>
-      </ul>
+      <h2 class="text-xl font-semibold mb-4">Education & Academic Tools</h2>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <a href="calculators/gpa.html" class="calc-card">GPA Calculator</a>
+        <a href="calculators/grades.html" class="calc-card">Grade Percentage</a>
+        <a href="calculators/statistics.html" class="calc-card">Z-Score & P-Value</a>
+        <a href="calculators/weighted.html" class="calc-card">Weighted Average</a>
+        <a href="calculators/study.html" class="calc-card">Study Time Tracker</a>
+      </div>
     </div>
 
-    <div id="work" class="tab-content hidden">
-      <ul class="list-disc list-inside space-y-2">
-        <li><a href="calculators/placeholder.html" class="text-blue-600 hover:underline">Overtime Pay Calculator (Coming Soon)</a></li>
-        <li><a href="calculators/placeholder.html" class="text-blue-600 hover:underline">Shift Hours Calculator (Coming Soon)</a></li>
-        <li><a href="calculators/placeholder.html" class="text-blue-600 hover:underline">Tax Deductions Calculator (Coming Soon)</a></li>
-      </ul>
+    <!-- Technology -->
+    <div id="tech" class="tab-content hidden">
+      <h2 class="text-xl font-semibold mb-4">Technology & Computing</h2>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <a href="calculators/binary.html" class="calc-card">Binary ↔ Decimal</a>
+        <a href="calculators/datastorage.html" class="calc-card">Data Storage Converter</a>
+        <a href="calculators/bandwidth.html" class="calc-card">Bandwidth</a>
+        <a href="calculators/downloadtime.html" class="calc-card">Download Time</a>
+        <a href="calculators/qrcode.html" class="calc-card">QR Code Generator</a>
+        <a href="calculators/password.html" class="calc-card">Password Generator</a>
+      </div>
     </div>
 
-    <div id="entertainment" class="tab-content hidden">
-      <ul class="list-disc list-inside space-y-2">
-        <li><a href="calculators/placeholder.html" class="text-blue-600 hover:underline">Movie Night Budget (Coming Soon)</a></li>
-        <li><a href="calculators/placeholder.html" class="text-blue-600 hover:underline">Game Score Tracker (Coming Soon)</a></li>
-        <li><a href="calculators/placeholder.html" class="text-blue-600 hover:underline">Lottery Odds Calculator (Coming Soon)</a></li>
-      </ul>
+    <!-- Misc -->
+    <div id="misc" class="tab-content hidden">
+      <h2 class="text-xl font-semibold mb-4">Miscellaneous Tools</h2>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <a href="calculators/random.html" class="calc-card">Random Number</a>
+        <a href="calculators/decision.html" class="calc-card">Decision Maker</a>
+        <a href="calculators/carbon.html" class="calc-card">Carbon Footprint</a>
+        <a href="calculators/distance.html" class="calc-card">GPS Distance</a>
+        <a href="calculators/lottery.html" class="calc-card">Lottery Odds</a>
+        <a href="calculators/timezones.html" class="calc-card">Time Zone Converter</a>
+      </div>
     </div>
-
-    <div id="miscellaneous" class="tab-content hidden">
-      <ul class="list-disc list-inside space-y-2">
-        <li><a href="calculators/placeholder.html" class="text-blue-600 hover:underline">Random Number Generator (Coming Soon)</a></li>
-        <li><a href="calculators/placeholder.html" class="text-blue-600 hover:underline">Decision Maker (Coming Soon)</a></li>
-        <li><a href="calculators/placeholder.html" class="text-blue-600 hover:underline">Countdown Timer (Coming Soon)</a></li>
-      </ul>
-    </div>
-
 
   </main>
 
+  <!-- Footer -->
   <footer class="text-center text-sm text-gray-500 mt-12 p-4">
-    © <span id="year"></span> Calcify
+    © <span id="year"></span> Calcify — Built for Everyone Who Counts
   </footer>
 
   <script>
