@@ -39,7 +39,7 @@
     <div id="finance" class="tab-content">
       <h2 class="text-xl font-semibold mb-4">Finance & Business Calculators</h2>
       <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-        <a href="calculators/takehome.html" class="block p-4 rounded-xl border border-gray-200 bg-gray-50 hover:bg-blue-50 hover:border-blue-400 transition text-blue-700 font-medium text-center shadow-sm">Take-Home Pay</a>
+        <a href="calculators/takehome.html" class="calc-card">Take-Home Pay</a>
         <a href="calculators/mortgage.html" class="calc-card">Mortgage</a>
         <a href="calculators/savings.html" class="calc-card">Savings Growth</a>
         <a href="calculators/loan.html" class="calc-card">Loan Repayment</a>
@@ -160,6 +160,28 @@
   <footer class="text-center text-sm text-gray-500 mt-12 p-4">
     © <span id="year"></span> Calcify — Built for Everyone Who Counts
   </footer>
+
+  <!-- Styles for cards -->
+  <style>
+    .calc-card {
+      display: block;
+      padding: 1rem;
+      border-radius: 0.75rem;
+      border: 1px solid #e5e7eb; /* gray-200 */
+      background-color: #f9fafb; /* gray-50 */
+      text-align: center;
+      font-weight: 500;
+      color: #1d4ed8; /* blue-700 */
+      transition: all 0.2s ease;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    .calc-card:hover {
+      background-color: #eff6ff; /* blue-50 */
+      border-color: #60a5fa; /* blue-400 */
+      transform: translateY(-2px);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+  </style>  
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
