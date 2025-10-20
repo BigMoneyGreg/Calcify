@@ -1,50 +1,44 @@
 <!DOCTYPE html>
 <html lang="en" class="transition-colors duration-300">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Calcify | The All-in-One Calculator Hub</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calcify | The All-in-One Calculator Hub</title>
 
-  <!-- ✅ This must come BEFORE Tailwind is loaded -->
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              light: '#60a5fa',
-              dark: '#3b82f6',
-            },
-          },
+    <!-- ✅ Correct Tailwind CDN setup with darkMode:'class' -->
+    <script>
+      window.tailwind = {
+        config: {
+          darkMode: "class",
         },
-      },
-    };
-  </script>
-  <script src="https://cdn.tailwindcss.com"></script>
+      };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
 
-  <script src="scripts/tabs.js" defer></script>
-</head>
+  <body
+    class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 font-sans transition-colors duration-300 min-h-screen flex flex-col">
+    <!-- Navbar -->
+    <nav
+      class="bg-blue-700 dark:bg-blue-900 text-white p-4 shadow-md transition-colors duration-300">
+      <div class="max-w-6xl mx-auto flex justify-between items-center">
+        <a href="/" class="font-bold text-2xl tracking-tight">Calcify 🇬🇧</a>
+        <!-- Dark mode toggle -->
+        <button
+          id="theme-toggle"
+          class="bg-white/10 hover:bg-white/20 text-white px-3 py-1.5 rounded-full text-sm transition">
+          🌞 Light Mode
+        </button>
+      </div>
+    </nav>
 
-<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 font-sans transition-colors duration-300 min-h-screen flex flex-col">
-
-  <!-- Navbar -->
-  <nav class="bg-blue-700 dark:bg-blue-900 text-white p-4 shadow-md transition-colors duration-300">
-    <div class="max-w-6xl mx-auto flex justify-between items-center">
-      <a href="/" class="font-bold text-2xl tracking-tight">Calcify 🇬🇧</a>
-      <!-- Dark mode toggle -->
-      <button id="theme-toggle" class="bg-white/10 hover:bg-white/20 text-white px-3 py-1.5 rounded-full text-sm transition">
-        🌞 Light Mode
-      </button>
-    </div>
-  </nav>
-
-  <!-- Main -->
-  <main class="flex-grow max-w-6xl mx-auto mt-10 p-8 bg-white dark:bg-gray-800 rounded-3xl shadow-lg transition-colors duration-300">
-    <h1 class="text-3xl font-bold mb-4">Welcome to Calcify</h1>
-    <p class="mb-8 text-gray-600 dark:text-gray-300 text-lg">
-      Choose a category to find the tool you need — from finance to fitness and beyond.
-    </p>
+    <!-- Main -->
+    <main
+      class="flex-grow max-w-6xl mx-auto mt-10 p-8 bg-white dark:bg-gray-800 rounded-3xl shadow-lg transition-colors duration-300">
+      <h1 class="text-3xl font-bold mb-4">Welcome to Calcify</h1>
+      <p class="mb-8 text-gray-600 dark:text-gray-300 text-lg">
+        Choose a category to find the tool you need — from finance to fitness and beyond.
+      </p>
 
     <!-- Tabs -->
     <div class="flex flex-wrap gap-2 mb-8">
@@ -185,74 +179,64 @@
     © <span id="year"></span> Calcify — Built for Everyone Who Counts
   </footer>
 
-  <!-- Card Styles -->
-  <style>
-    .calc-card {
-      display: block;
-      padding: 1rem;
-      border-radius: 0.75rem;
-      border: 1px solid #e5e7eb;
-      background-color: #f9fafb;
-      text-align: center;
-      font-weight: 500;
-      color: #1d4ed8;
-      transition: all 0.2s ease;
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-    }
+    <!-- Custom Card Styles -->
+    <style>
+      .calc-card {
+        display: block;
+        padding: 1rem;
+        border-radius: 0.75rem;
+        border: 1px solid #e5e7eb;
+        background-color: #f9fafb;
+        text-align: center;
+        font-weight: 500;
+        color: #1d4ed8;
+        transition: all 0.2s ease;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+      }
+      .calc-card:hover {
+        background-color: #eff6ff;
+        border-color: #60a5fa;
+        transform: translateY(-2px);
+      }
+      .dark .calc-card {
+        background-color: #1f2937;
+        border-color: #374151;
+        color: #93c5fd;
+      }
+      .dark .calc-card:hover {
+        background-color: #111827;
+        border-color: #3b82f6;
+        color: #bfdbfe;
+      }
+    </style>
 
-    .calc-card:hover {
-      background-color: #eff6ff;
-      border-color: #60a5fa;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
+    <!-- Script -->
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
 
-    /* Dark mode cards */
-    .dark .calc-card {
-      background-color: #1f2937;
-      border-color: #374151;
-      color: #93c5fd;
-      box-shadow: 0 1px 2px rgba(255, 255, 255, 0.05);
-    }
+      const html = document.documentElement;
+      const themeToggle = document.getElementById("theme-toggle");
 
-    .dark .calc-card:hover {
-      background-color: #111827;
-      border-color: #3b82f6;
-      color: #bfdbfe;
-      box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
-    }
-  </style>
+      // Apply saved theme or system default
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        html.classList.add("dark");
+        themeToggle.textContent = "🌙 Dark Mode";
+      } else {
+        html.classList.remove("dark");
+        themeToggle.textContent = "🌞 Light Mode";
+      }
 
-  <!-- Scripts -->
-  <script>
-    // Set current year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Theme toggle logic
-    const html = document.documentElement;
-    const themeToggle = document.getElementById('theme-toggle');
-
-    // Load saved theme or system preference
-    if (
-      localStorage.theme === 'dark' ||
-      (!('theme' in localStorage) &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches)
-    ) {
-      html.classList.add('dark');
-      themeToggle.textContent = '🌙 Dark Mode';
-    } else {
-      html.classList.remove('dark');
-      themeToggle.textContent = '🌞 Light Mode';
-    }
-
-    // Toggle button click
-    themeToggle.addEventListener('click', () => {
-      html.classList.toggle('dark');
-      const isDark = html.classList.contains('dark');
-      localStorage.theme = isDark ? 'dark' : 'light';
-      themeToggle.textContent = isDark ? '🌙 Dark Mode' : '🌞 Light Mode';
-    });
-  </script>
-
-</body>
+      // Toggle click
+      themeToggle.addEventListener("click", () => {
+        html.classList.toggle("dark");
+        const isDark = html.classList.contains("dark");
+        localStorage.theme = isDark ? "dark" : "light";
+        themeToggle.textContent = isDark ? "🌙 Dark Mode" : "🌞 Light Mode";
+      });
+    </script>
+  </body>
 </html>
