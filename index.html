@@ -1,12 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html lang="en" class="transition-colors duration-300">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calcify | The All-in-One Calculator Hub</title>
+
+  <!-- 👇 Configure Tailwind to use class-based dark mode -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="scripts/tabs.js" defer></script>
 </head>
+
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 font-sans transition-colors duration-300">
 
   <!-- Navbar -->
