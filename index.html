@@ -7,32 +7,36 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="scripts/tabs.js" defer></script>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 font-sans transition-colors duration-300">
 
   <!-- Navbar -->
-  <nav class="bg-blue-700 text-white p-4 shadow-md">
+  <nav class="bg-blue-700 dark:bg-blue-800 text-white p-4 shadow-md">
     <div class="max-w-6xl mx-auto flex justify-between items-center">
       <a href="/" class="font-bold text-2xl tracking-tight">Calcify 🇬🇧</a>
-      <span class="hidden sm:block text-sm opacity-80">All Your Calculations in One Place</span>
+      
+      <!-- Dark mode toggle -->
+      <button id="theme-toggle" class="bg-white/10 hover:bg-white/20 text-white px-3 py-1.5 rounded-full text-sm transition">
+        🌞 Light
+      </button>
     </div>
   </nav>
 
   <!-- Main -->
-  <main class="max-w-6xl mx-auto mt-10 p-8 bg-white rounded-3xl shadow-lg">
+  <main class="max-w-6xl mx-auto mt-10 p-8 bg-white dark:bg-gray-800 rounded-3xl shadow-lg transition-colors duration-300">
     <h1 class="text-3xl font-bold mb-4">Welcome to Calcify</h1>
-    <p class="mb-8 text-gray-600 text-lg">Choose a category to find the tool you need — from finance to fitness and beyond.</p>
+    <p class="mb-8 text-gray-600 dark:text-gray-300 text-lg">Choose a category to find the tool you need — from finance to fitness and beyond.</p>
 
     <!-- Tabs -->
     <div class="flex flex-wrap gap-2 mb-8">
       <button class="tab-btn bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium" data-tab="finance">Finance</button>
-      <button class="tab-btn bg-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-medium" data-tab="science">Science</button>
-      <button class="tab-btn bg-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-medium" data-tab="math">Math</button>
-      <button class="tab-btn bg-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-medium" data-tab="health">Health</button>
-      <button class="tab-btn bg-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-medium" data-tab="everyday">Everyday</button>
-      <button class="tab-btn bg-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-medium" data-tab="cooking">Cooking</button>
-      <button class="tab-btn bg-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-medium" data-tab="education">Education</button>
-      <button class="tab-btn bg-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-medium" data-tab="tech">Technology</button>
-      <button class="tab-btn bg-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-medium" data-tab="misc">Misc</button>
+      <button class="tab-btn bg-gray-200 dark:bg-gray-700 dark:text-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-medium" data-tab="science">Science</button>
+      <button class="tab-btn bg-gray-200 dark:bg-gray-700 dark:text-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-medium" data-tab="math">Math</button>
+      <button class="tab-btn bg-gray-200 dark:bg-gray-700 dark:text-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-medium" data-tab="health">Health</button>
+      <button class="tab-btn bg-gray-200 dark:bg-gray-700 dark:text-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-medium" data-tab="everyday">Everyday</button>
+      <button class="tab-btn bg-gray-200 dark:bg-gray-700 dark:text-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-medium" data-tab="cooking">Cooking</button>
+      <button class="tab-btn bg-gray-200 dark:bg-gray-700 dark:text-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-medium" data-tab="education">Education</button>
+      <button class="tab-btn bg-gray-200 dark:bg-gray-700 dark:text-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-medium" data-tab="tech">Technology</button>
+      <button class="tab-btn bg-gray-200 dark:bg-gray-700 dark:text-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-medium" data-tab="misc">Misc</button>
     </div>
 
     <!-- Finance -->
@@ -157,34 +161,69 @@
   </main>
 
   <!-- Footer -->
-  <footer class="text-center text-sm text-gray-500 mt-12 p-4">
+  <footer class="text-center text-sm text-gray-500 dark:text-gray-400 mt-12 p-4 transition-colors duration-300">
     © <span id="year"></span> Calcify — Built for Everyone Who Counts
   </footer>
 
-  <!-- Styles for cards -->
+  <!-- Card styling -->
   <style>
     .calc-card {
       display: block;
       padding: 1rem;
       border-radius: 0.75rem;
-      border: 1px solid #e5e7eb; /* gray-200 */
-      background-color: #f9fafb; /* gray-50 */
+      border: 1px solid #e5e7eb;
+      background-color: #f9fafb;
       text-align: center;
       font-weight: 500;
-      color: #1d4ed8; /* blue-700 */
+      color: #1d4ed8;
       transition: all 0.2s ease;
       box-shadow: 0 1px 2px rgba(0,0,0,0.05);
     }
     .calc-card:hover {
-      background-color: #eff6ff; /* blue-50 */
-      border-color: #60a5fa; /* blue-400 */
+      background-color: #eff6ff;
+      border-color: #60a5fa;
       transform: translateY(-2px);
       box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
-  </style>  
 
+    /* Dark mode */
+    .dark .calc-card {
+      background-color: #1f2937;
+      border-color: #374151;
+      color: #93c5fd;
+    }
+    .dark .calc-card:hover {
+      background-color: #111827;
+      border-color: #3b82f6;
+      color: #bfdbfe;
+    }
+  </style>
+
+  <!-- Scripts -->
   <script>
+    // Year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Theme toggle logic
+    const html = document.documentElement;
+    const themeToggle = document.getElementById('theme-toggle');
+
+    if (localStorage.theme === 'dark' || 
+        (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      html.classList.add('dark');
+      themeToggle.textContent = '🌙 Dark';
+    } else {
+      html.classList.remove('dark');
+      themeToggle.textContent = '🌞 Light';
+    }
+
+    themeToggle.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      const isDark = html.classList.contains('dark');
+      localStorage.theme = isDark ? 'dark' : 'light';
+      themeToggle.textContent = isDark ? '🌙 Dark' : '🌞 Light';
+    });
   </script>
+
 </body>
 </html>
