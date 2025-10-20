@@ -10,15 +10,15 @@ tabs.forEach(tab => {
 
     // Remove active style from all tabs
     tabs.forEach(t => {
-      t.classList.remove('bg-blue-600', 'text-white');
-      t.classList.add('bg-gray-200', 'text-gray-800');
+      t.classList.remove('tab-active');
+      t.classList.add('tab-inactive');
     });
 
     // Show selected tab content
     document.getElementById(target).classList.remove('hidden');
 
     // Style selected tab
-    tab.classList.add('bg-blue-600', 'text-white');
-    tab.classList.remove('bg-gray-200', 'text-gray-800');
+    tab.classList.add('tab-active');
+    tab.classList.remove('tab-inactive');
   });
 });
