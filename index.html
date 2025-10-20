@@ -4,17 +4,88 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calcify | Universal Calculator Hub</title>
-
+  
     <!-- ✅ Standard Tailwind CDN (no config needed) -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="scripts/theme-toggle.js" defer></script>
+  
+    <!-- Custom Styles for Dark/Light Mode -->
+    <style>
+:root {
+  --bg-color: #fdf6f0;                
+  --text-color: #2c2c2c;              
+  --nav-bg-color: #a8dadc;            
+  --nav-text-color: #1d3557;          
+  --main-bg-color: #ffffff;           
+  --footer-bg-color: #f1f1f1;         
+  --footer-text-color: #6c757d;       
+  --card-bg-color: #ffffff;           
+  --card-border-color: #e0e0e0;       
+  --card-text-color: #457b9d;         
+  --card-hover-bg-color: #e6f0f0;     
+  --card-hover-border-color: #a8dadc; 
+}
+
+[data-theme="dark"] {
+  --bg-color: #1a1a1a;                
+  --text-color: #eaeaea;              
+  --nav-bg-color: #264653;            
+  --nav-text-color: #f1faee;          
+  --main-bg-color: #2c2c2c;           
+  --footer-bg-color: #2c2c2c;         
+  --footer-text-color: #b0b0b0;       
+  --card-bg-color: #1f2937;           
+  --card-border-color: #3a3a3a;       
+  --card-text-color: #a8dadc;         
+  --card-hover-bg-color: #264653;     
+  --card-hover-border-color: #2a9d8f; 
+}
+    
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+      }
+    
+      nav {
+        background-color: var(--nav-bg-color);
+        color: var(--nav-text-color);
+      }
+    
+      main {
+        background-color: var(--main-bg-color);
+        color: var(--text-color);
+      }
+    
+      footer {
+        background-color: var(--footer-bg-color);
+        color: var(--footer-text-color);
+      }
+    
+      .calc-card {
+        display: block;
+        padding: 1rem;
+        border-radius: 0.75rem;
+        border: 1px solid var(--card-border-color);
+        background-color: var(--card-bg-color);
+        text-align: center;
+        font-weight: 500;
+        color: var(--card-text-color);
+        transition: all 0.2s ease;
+      }
+    
+      .calc-card:hover {
+        background-color: var(--card-hover-bg-color);
+        border-color: var(--card-hover-border-color);
+      }
+    </style>
   </head>
 
   <body
-    class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 min-h-screen flex flex-col transition-colors duration-300"
+  class="min-h-screen flex flex-col transition-colors duration-300"
   >
     <!-- Navbar -->
     <nav
-      class="bg-blue-700 dark:bg-blue-900 text-white p-4 shadow-md transition-colors duration-300"
+    class="p-4 shadow-md transition-colors duration-300"
     >
       <div class="max-w-6xl mx-auto flex justify-between items-center">
         <a href="/" class="font-bold text-2xl">Calcify 🇬🇧</a>
@@ -29,23 +100,23 @@
 
     <!-- Main -->
     <main
-      class="flex-grow max-w-6xl mx-auto mt-10 p-8 bg-white dark:bg-gray-800 rounded-3xl shadow-lg transition-colors duration-300">
-      <h1 class="text-3xl font-bold mb-4">Welcome to Calcify</h1>
-      <p class="mb-8 text-gray-600 dark:text-gray-300 text-lg">
-        Choose a category to find the tool you need — from finance to fitness and beyond.
-      </p>
+    class="flex-grow max-w-6xl mx-auto mt-10 p-8 rounded-3xl shadow-lg transition-colors duration-300">
+    <h1 class="text-3xl font-bold mb-4">Welcome to Calcify</h1>
+    <p class="mb-8 text-lg">
+      Choose a category to find the tool you need — from finance to fitness and beyond.
+    </p>
 
     <!-- Tabs -->
     <div class="flex flex-wrap gap-2 mb-8">
-      <button class="tab-btn bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium" data-tab="finance">Finance</button>
-      <button class="tab-btn bg-gray-200 dark:bg-gray-700 dark:text-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-medium" data-tab="science">Science</button>
-      <button class="tab-btn bg-gray-200 dark:bg-gray-700 dark:text-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-medium" data-tab="math">Math</button>
-      <button class="tab-btn bg-gray-200 dark:bg-gray-700 dark:text-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-medium" data-tab="health">Health</button>
-      <button class="tab-btn bg-gray-200 dark:bg-gray-700 dark:text-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-medium" data-tab="everyday">Everyday</button>
-      <button class="tab-btn bg-gray-200 dark:bg-gray-700 dark:text-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-medium" data-tab="cooking">Cooking</button>
-      <button class="tab-btn bg-gray-200 dark:bg-gray-700 dark:text-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-medium" data-tab="education">Education</button>
-      <button class="tab-btn bg-gray-200 dark:bg-gray-700 dark:text-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-medium" data-tab="tech">Technology</button>
-      <button class="tab-btn bg-gray-200 dark:bg-gray-700 dark:text-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-medium" data-tab="misc">Misc</button>
+      <button class="tab-btn px-4 py-2 rounded-full text-sm font-medium" data-tab="finance">Finance</button>
+      <button class="tab-btn px-4 py-2 rounded-full text-sm font-medium" data-tab="science">Science</button>
+      <button class="tab-btn px-4 py-2 rounded-full text-sm font-medium" data-tab="math">Math</button>
+      <button class="tab-btn px-4 py-2 rounded-full text-sm font-medium" data-tab="health">Health</button>
+      <button class="tab-btn px-4 py-2 rounded-full text-sm font-medium" data-tab="everyday">Everyday</button>
+      <button class="tab-btn px-4 py-2 rounded-full text-sm font-medium" data-tab="cooking">Cooking</button>
+      <button class="tab-btn px-4 py-2 rounded-full text-sm font-medium" data-tab="education">Education</button>
+      <button class="tab-btn px-4 py-2 rounded-full text-sm font-medium" data-tab="tech">Technology</button>
+      <button class="tab-btn px-4 py-2 rounded-full text-sm font-medium" data-tab="misc">Misc</button>
     </div>
 
     <!-- Finance -->
@@ -170,64 +241,9 @@
   </main>
 
   <!-- Footer -->
-  <footer class="text-center text-sm text-gray-500 dark:text-gray-400 mt-12 p-4 transition-colors duration-300">
-    © <span id="year"></span> Calcify — Built for Everyone Who Counts
+  <footer class="text-center text-sm mt-12 p-4 transition-colors duration-300">
+    © <span id="year"></span> Calcify — Built for Everyone
   </footer>
 
-    <!-- Custom Card Styles -->
-    <style>
-      .calc-card {
-        display: block;
-        padding: 1rem;
-        border-radius: 0.75rem;
-        border: 1px solid #e5e7eb;
-        background-color: #f9fafb;
-        text-align: center;
-        font-weight: 500;
-        color: #1d4ed8;
-        transition: all 0.2s ease;
-      }
-      .calc-card:hover {
-        background-color: #eff6ff;
-        border-color: #60a5fa;
-      }
-
-      [data-theme="dark"] .calc-card {
-        background-color: #1f2937;
-        border-color: #374151;
-        color: #93c5fd;
-      }
-
-      [data-theme="dark"] .calc-card:hover {
-        background-color: #111827;
-        border-color: #3b82f6;
-        color: #bfdbfe;
-      }
-    </style>
-
-    <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
-
-      const themeToggle = document.getElementById("theme-toggle");
-      const html = document.documentElement;
-
-      // Load saved theme
-      const storedTheme = localStorage.getItem("theme");
-      if (storedTheme) {
-        html.setAttribute("data-theme", storedTheme);
-        themeToggle.textContent =
-          storedTheme === "dark" ? "🌙 Dark Mode" : "🌞 Light Mode";
-      }
-
-      // Toggle theme
-      themeToggle.addEventListener("click", () => {
-        const current = html.getAttribute("data-theme");
-        const next = current === "dark" ? "light" : "dark";
-        html.setAttribute("data-theme", next);
-        localStorage.setItem("theme", next);
-        themeToggle.textContent =
-          next === "dark" ? "🌙 Dark Mode" : "🌞 Light Mode";
-      });
-    </script>
   </body>
 </html>
