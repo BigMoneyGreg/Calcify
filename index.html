@@ -5,15 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Calcify | The All-in-One Calculator Hub</title>
 
-  <!-- ✅ Enable Tailwind dark mode via class -->
+  <!-- ✅ This must come BEFORE Tailwind is loaded -->
   <script>
-    tailwind = {
-      config: {
-        darkMode: 'class'
-      }
-    }
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              light: '#60a5fa',
+              dark: '#3b82f6',
+            },
+          },
+        },
+      },
+    };
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
+
   <script src="scripts/tabs.js" defer></script>
 </head>
 
