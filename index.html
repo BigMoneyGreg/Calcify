@@ -1,32 +1,27 @@
 <!DOCTYPE html>
-<html lang="en" class="transition-colors duration-300">
+<html lang="en" data-theme="light" class="transition-colors duration-300">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Calcify | The All-in-One Calculator Hub</title>
+    <title>Calcify | Universal Calculator Hub</title>
 
-    <!-- ✅ Correct Tailwind CDN setup with darkMode:'class' -->
-    <script>
-      window.tailwind = {
-        config: {
-          darkMode: "class",
-        },
-      };
-    </script>
+    <!-- ✅ Standard Tailwind CDN (no config needed) -->
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
 
   <body
-    class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 font-sans transition-colors duration-300 min-h-screen flex flex-col">
+    class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 min-h-screen flex flex-col transition-colors duration-300"
+  >
     <!-- Navbar -->
     <nav
-      class="bg-blue-700 dark:bg-blue-900 text-white p-4 shadow-md transition-colors duration-300">
+      class="bg-blue-700 dark:bg-blue-900 text-white p-4 shadow-md transition-colors duration-300"
+    >
       <div class="max-w-6xl mx-auto flex justify-between items-center">
-        <a href="/" class="font-bold text-2xl tracking-tight">Calcify 🇬🇧</a>
-        <!-- Dark mode toggle -->
+        <a href="/" class="font-bold text-2xl">Calcify 🇬🇧</a>
         <button
           id="theme-toggle"
-          class="bg-white/10 hover:bg-white/20 text-white px-3 py-1.5 rounded-full text-sm transition">
+          class="bg-white/10 hover:bg-white/20 text-white px-3 py-1.5 rounded-full text-sm transition"
+        >
           🌞 Light Mode
         </button>
       </div>
@@ -191,51 +186,47 @@
         font-weight: 500;
         color: #1d4ed8;
         transition: all 0.2s ease;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
       }
       .calc-card:hover {
         background-color: #eff6ff;
         border-color: #60a5fa;
-        transform: translateY(-2px);
       }
-      .dark .calc-card {
+
+      [data-theme="dark"] .calc-card {
         background-color: #1f2937;
         border-color: #374151;
         color: #93c5fd;
       }
-      .dark .calc-card:hover {
+
+      [data-theme="dark"] .calc-card:hover {
         background-color: #111827;
         border-color: #3b82f6;
         color: #bfdbfe;
       }
     </style>
 
-    <!-- Script -->
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
 
-      const html = document.documentElement;
       const themeToggle = document.getElementById("theme-toggle");
+      const html = document.documentElement;
 
-      // Apply saved theme or system default
-      if (
-        localStorage.theme === "dark" ||
-        (!("theme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
-      ) {
-        html.classList.add("dark");
-        themeToggle.textContent = "🌙 Dark Mode";
-      } else {
-        html.classList.remove("dark");
-        themeToggle.textContent = "🌞 Light Mode";
+      // Load saved theme
+      const storedTheme = localStorage.getItem("theme");
+      if (storedTheme) {
+        html.setAttribute("data-theme", storedTheme);
+        themeToggle.textContent =
+          storedTheme === "dark" ? "🌙 Dark Mode" : "🌞 Light Mode";
       }
 
-      // Toggle click
+      // Toggle theme
       themeToggle.addEventListener("click", () => {
-        html.classList.toggle("dark");
-        const isDark = html.classList.contains("dark");
-        localStorage.theme = isDark ? "dark" : "light";
-        themeToggle.textContent = isDark ? "🌙 Dark Mode" : "🌞 Light Mode";
+        const current = html.getAttribute("data-theme");
+        const next = current === "dark" ? "light" : "dark";
+        html.setAttribute("data-theme", next);
+        localStorage.setItem("theme", next);
+        themeToggle.textContent =
+          next === "dark" ? "🌙 Dark Mode" : "🌞 Light Mode";
       });
     </script>
   </body>
