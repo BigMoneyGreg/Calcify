@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" class="transition-colors duration-300">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UK Take-Home Pay Calculator 2025</title>
+    <link rel="stylesheet" href="../../styles/styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../../scripts/theme-toggle.js" defer></script>
+    <script src="../../scripts/finance/takehome.js" defer></script>
+  </head>
+  
+  <body class="min-h-screen flex flex-col transition-colors duration-300">
+    <!-- Navbar -->
+    <nav class="p-4 shadow-md transition-colors duration-300">
+      <div class="max-w-6xl mx-auto flex justify-between items-center">
+        <a href="../../index.html" class="font-bold text-2xl">Calcify</a>
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="nav-btn">
+            Back to Home
+          </a>
+          <button id="theme-toggle" class="nav-btn">
+            🌞 Light Mode
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-xl mx-auto mt-10 p-6 rounded-2xl shadow-lg transition-colors duration-300">
+      <h1 class="text-2xl font-bold mb-4">UK Take-Home Pay Calculator (2025)</h1>
+
+      <label for="salary" class="block mb-2 font-medium">Annual Salary (£)</label>
+      <input id="salary" type="number" class="border rounded w-full p-2 mb-4" placeholder="e.g. 40000">
+
+      <label for="pension" class="block mb-2 font-medium">Pension Contribution (%)</label>
+      <input id="pension" type="number" class="border rounded w-full p-2 mb-4" placeholder="e.g. 5">
+
+      <label for="studentLoan" class="block mb-2 font-medium">Student Loan Plan</label>
+      <select id="studentLoan" class="border rounded w-full p-2 mb-4">
+        <option value="none">None</option>
+        <option value="plan1">Plan 1 (Started Before 2012)</option>
+        <option value="plan2">Plan 2 (Started 2012 - 2023)</option>
+        <option value="plan4">Plan 4 (Scottish Loans)</option>
+        <option value="plan5">Plan 5 (Started After 2023)</option>
+        <option value="postgrad">Postgraduate (Master's/PhD)</option>
+      </select>
+
+      <button id="calcBtn" class="tab-active w-full">
+        Calculate
+      </button>
+      
+      <div id="result" class="mt-6 text-lg font-semibold"></div>
+
+      <div id="chart-container" class="mt-8 hidden">
+        <canvas id="breakdownChart" height="200"></canvas>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center text-sm mt-12 p-4 transition-colors duration-300">
+      © <span id="year"></span> Calcify — Built for Everyone
+    </footer>
+  </body>
+</html>

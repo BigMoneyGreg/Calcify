@@ -1,3 +1,6 @@
+/* ------------------------------------------------------------------------------------ */
+/* CSS Variables */
+/* ------------------------------------------------------------------------------------ */
 :root {
   /* General Colors */
   --bg-color: #fdf6f0;
@@ -32,8 +35,29 @@
   --card-text-color: #a8dadc;
   --card-hover-bg-color: #264653;
   --card-hover-border-color: #2a9d8f;
+
+  /* Dark Mode for Inputs and Labels */
+  input,
+  select {
+    background-color: #2c2c2c; /* Dark background for inputs */
+    border: 1px solid #3a3a3a; /* Darker border */
+    color: #eaeaea; /* Light text color */
+  }
+
+  input:focus,
+  select:focus {
+    border-color: var(--card-hover-border-color); /* Highlight border on focus */
+    box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.3); /* Subtle shadow */
+  }
+
+  label {
+    color: #eaeaea; /* Light text color for labels */
+  }
 }
 
+/* ------------------------------------------------------------------------------------ */
+/* Global Styles */
+/* ------------------------------------------------------------------------------------ */
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
@@ -54,6 +78,9 @@ footer {
   color: var(--footer-text-color);
 }
 
+/* ------------------------------------------------------------------------------------ */
+/* Component Styles */
+/* ------------------------------------------------------------------------------------ */
 .calc-card {
   display: block;
   padding: 1rem;
@@ -90,4 +117,80 @@ footer {
   background-color: var(--card-hover-bg-color); /* Use card hover background for hover effect */
   color: var(--card-text-color); /* Use card text color for hover effect */
   border-color: var(--card-hover-border-color);
+}
+
+/* ------------------------------------------------------------------------------------ */
+/* Form Styles */
+/* ------------------------------------------------------------------------------------ */
+label {
+  color: var(--text-color); /* Use a CSS variable for consistency */
+  font-weight: bold;
+}
+
+input,
+select {
+  background-color: #f9f9f9; /* Light gray background */
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 0.5rem; /* Rounded corners */
+  padding: 0.5rem; /* Padding inside the input */
+  color: #333; /* Dark text color */
+  font-size: 1rem; /* Font size */
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--nav-bg-color); /* Highlight border on focus */
+  box-shadow: 0 0 0 3px rgba(168, 218, 220, 0.3); /* Subtle shadow */
+  outline: none; /* Remove default outline */
+}
+
+/* ------------------------------------------------------------------------------------ */
+/* Results Box Styles */
+/* ------------------------------------------------------------------------------------ */
+.results-box {
+  background-color: var(--card-bg-color); /* Light or dark background */
+  color: var(--text-color); /* Light or dark text color */
+  border: 1px solid var(--card-border-color); /* Light or dark border */
+  border-radius: 0.75rem; /* Rounded corners */
+  padding: 1rem; /* Padding inside the box */
+  margin-top: 1rem; /* Add spacing above the box */
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Smooth transitions */
+}
+
+.results-box h2 {
+  color: var(--text-color); /* Ensure the heading adapts to the theme */
+  margin-bottom: 0.5rem; /* Add spacing below the heading */
+}
+
+.results-box p {
+  color: var(--text-color); /* Ensure the text adapts to the theme */
+  margin-bottom: 0.5rem; /* Add spacing between paragraphs */
+}
+
+.results-box hr {
+  border-color: var(--card-border-color); /* Ensure the divider adapts to the theme */
+  margin: 1rem 0; /* Add spacing around the divider */
+}
+
+/* ------------------------------------------------------------------------------------ */
+/* Button Styles */
+/* ------------------------------------------------------------------------------------ */
+.nav-btn {
+  background-color: var(--nav-bg-color); /* Use navbar background color */
+  color: var(--nav-text-color); /* Use navbar text color */
+  padding: 0.375rem 0.75rem; /* Add padding */
+  border-radius: 9999px; /* Fully rounded corners */
+  font-size: 0.875rem; /* Small font size */
+  font-weight: 500; /* Medium font weight */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
+}
+
+.nav-btn:hover {
+  background-color: var(--card-bg-color); /* Use card hover background for hover effect */
+  color: var(--card-text-color); /* Use card text color for hover effect */
+}
+
+.nav-btn:focus {
+  outline: none; /* Remove default focus outline */
 }
