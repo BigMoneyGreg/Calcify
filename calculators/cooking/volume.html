@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" class="transition-colors duration-300">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cooking Volume Converter</title>
+    <link rel="stylesheet" href="../../styles/styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../../scripts/theme-toggle.js" defer></script>
+    <script src="../../scripts/cooking/volume.js" defer></script>
+  </head>
+  
+  <body class="min-h-screen flex flex-col transition-colors duration-300">
+    <!-- Navbar -->
+    <nav class="p-4 shadow-md transition-colors duration-300">
+      <div class="max-w-6xl mx-auto flex justify-between items-center">
+        <a href="../../index.html" class="font-bold text-2xl primary-text">Calcify</a>
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="nav-btn">Back to Home</a>
+          <button id="theme-toggle" class="nav-btn">🌞 Light Mode</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-xl mx-auto mt-10 p-6 rounded-2xl shadow-lg transition-colors duration-300 bg-light">
+      <h1 class="text-2xl font-bold mb-6 text-center primary-text">Cooking Volume Converter</h1>
+
+      <!-- Tabs for different conversions -->
+      <div class="tabs flex justify-center mb-6">
+        <button class="tab tab-active mx-2 px-4 py-2 rounded-lg border hover-bg-light" data-conversion="cupsToMl">Cups to Milliliters</button>
+        <button class="tab mx-2 px-4 py-2 rounded-lg border hover-bg-light" data-conversion="tbspToTsp">Tablespoons to Teaspoons</button>
+        <button class="tab mx-2 px-4 py-2 rounded-lg border hover-bg-light" data-conversion="ozToMl">Ounces to Milliliters</button>
+      </div>
+
+      <!-- Conversion Ratios -->
+      <div id="conversionRatios" class="text-center mb-6 secondary-text">
+        <p>1 Cup = 240 Milliliters</p>
+      </div>
+
+      <!-- Conversion Form -->
+      <div id="conversionForm" class="bg-secondary p-4 rounded-lg shadow-md">
+        <label for="inputValue" class="block mb-2 font-medium secondary-text">Enter Value</label>
+        <input id="inputValue" type="number" class="border rounded w-full p-2 mb-4 focus-ring" placeholder="e.g. 1">
+
+        <button id="convertBtn" class="tab-active w-full">Convert</button>
+      </div>
+
+      <!-- Result -->
+      <div id="result" class="mt-6 text-lg font-semibold text-center primary-text"></div>
+
+      <!-- Chart -->
+      <div id="chart-container" class="mt-8 hidden">
+        <canvas id="volumeChart" height="200"></canvas>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center text-sm mt-12 p-4 transition-colors duration-300 secondary-text">
+      © <span id="year"></span> Calcify — Built for Everyone
+    </footer>
+  </body>
+</html>

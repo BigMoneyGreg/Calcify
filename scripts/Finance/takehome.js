@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
   const calcBtn = document.getElementById("calcBtn");
-  calcBtn.addEventListener("click", calculate);
+  calcBtn.addEventListener("click", calculateSalary);
 });
 
 let breakdownChart;
 
-function calculate() {
+function calculateSalary() {
   const salary = parseFloat(document.getElementById("salary").value);
   const pensionPercent = parseFloat(document.getElementById("pension").value) || 0;
   const studentLoanPlan = document.getElementById("studentLoan").value;
