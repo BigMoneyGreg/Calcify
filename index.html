@@ -3,13 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Calcify | Universal Calculator Hub</title>
+    <title>Calcify | Finance Calculators</title>
   
     <!-- ✅ Standard Tailwind CDN (no config needed) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles/styles.css">
     <script src="scripts/theme-toggle.js" defer></script>
-    <script src="scripts/tabs.js" defer></script>
   </head>
 
   <body class="min-h-screen flex flex-col transition-colors duration-300">
@@ -24,44 +23,35 @@
     </nav>
 
     <!-- Main -->
-    <main class="flex-grow max-w-6xl mx-auto mt-10 p-8 rounded-3xl shadow-lg transition-colors duration-300">
-      <h1 class="text-3xl font-bold mb-4">Welcome to Calcify</h1>
-      <p class="mb-8 text-lg">
-        Choose a category to find the tool you need — from finance to fitness and beyond.
-      </p>
+    <main class="flex-grow max-w-full mx-10 mt-10 p-8 rounded-3xl shadow-lg transition-colors duration-300">
+      <h1 class="text-4xl font-bold mb-6 text-center">Finance Calculators</h1>
 
-      <!-- Tabs -->
-      <div class="flex flex-wrap gap-2 mb-8">
-        <button class="tab-btn tab-active px-4 py-2 rounded-full text-sm font-medium" data-tab="finance">Finance</button>
-        <button class="tab-btn tab-inactive px-4 py-2 rounded-full text-sm font-medium" data-tab="cooking">Cooking</button>
-        <button class="tab-btn tab-inactive px-4 py-2 rounded-full text-sm font-medium" data-tab="math">Math</button>
-        <button class="tab-btn tab-inactive px-4 py-2 rounded-full text-sm font-medium" data-tab="health">Health</button>
-        <button class="tab-btn tab-inactive px-4 py-2 rounded-full text-sm font-medium" data-tab="everyday">Everyday</button>
-        <button class="tab-btn tab-inactive px-4 py-2 rounded-full text-sm font-medium" data-tab="science">Science</button>
-        <button class="tab-btn tab-inactive px-4 py-2 rounded-full text-sm font-medium" data-tab="education">Education</button>
-        <button class="tab-btn tab-inactive px-4 py-2 rounded-full text-sm font-medium" data-tab="tech">Technology</button>
-        <button class="tab-btn tab-inactive px-4 py-2 rounded-full text-sm font-medium" data-tab="misc">Misc</button>
-      </div>
+      <!-- Finance Calculators in Columns -->
+      <div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-4 gap-4">
+        <!-- Take-Home Pay Calculator -->
+        <div class="calc-card p-4 border rounded-lg shadow-lg bg-custom-dark">
+          <h2 class="text-lg font-semibold mb-4 text-center">Take-Home Pay Calculator</h2>
+          <iframe src="calculators/takehome.html" class="w-full h-[1000px] border-0 rounded-lg"></iframe>
+        </div>
 
-      <!-- Finance -->
-      <div id="finance" class="tab-content">
-        <h2 class="text-xl font-semibold mb-4">Finance & Business Calculators</h2>
-        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-          <a href="calculators/finance/takehome.html" class="calc-card">Take-Home Pay</a>
-          <a href="calculators/finance/savings.html" class="calc-card">Savings Over Time</a>
-          <a href="calculators/finance/mortgage.html" class="calc-card">Mortgage Repayments</a>
-          <a href="calculators/finance/pension.html" class="calc-card">Pension Growth</a>
+        <!-- Savings Over Time Calculator -->
+        <div class="calc-card p-4 border rounded-lg shadow-lg bg-custom-dark">
+          <h2 class="text-lg font-semibold mb-4 text-center">Savings Over Time Calculator</h2>
+          <iframe src="calculators/savings.html" class="w-full h-[1000px] border-0 rounded-lg"></iframe>
+        </div>
+
+        <!-- Mortgage Repayments Calculator -->
+        <div class="calc-card p-4 border rounded-lg shadow-lg bg-custom-dark">
+          <h2 class="text-lg font-semibold mb-4 text-center">Mortgage Repayments Calculator</h2>
+          <iframe src="calculators/mortgage.html" class="w-full h-[1000px] border-0 rounded-lg"></iframe>
+        </div>
+
+        <!-- Pension Growth Calculator -->
+        <div class="calc-card p-4 border rounded-lg shadow-lg bg-custom-dark">
+          <h2 class="text-lg font-semibold mb-4 text-center">Pension Growth Calculator</h2>
+          <iframe src="calculators/pension.html" class="w-full h-[1000px] border-0 rounded-lg"></iframe>
         </div>
       </div>
-
-      <!-- Cooking -->
-      <div id="cooking" class="tab-content hidden">
-        <h2 class="text-xl font-semibold mb-4">Cooking & Measurement Converters</h2>
-        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-          <a href="calculators/cooking/volume.html" class="calc-card">Volume Converter</a>
-        </div>
-      </div>
-
     </main>
 
     <!-- Footer -->

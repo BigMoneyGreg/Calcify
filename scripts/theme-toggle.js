@@ -1,22 +1,28 @@
-document.getElementById("year").textContent = new Date().getFullYear();
+document.addEventListener("DOMContentLoaded", () => {
+  const themeToggle = document.getElementById("theme-toggle");
+  const rootElement = document.documentElement;
 
-const themeToggle = document.getElementById("theme-toggle");
-const html = document.documentElement;
+  // Load the saved theme from localStorage
+  const isLightTheme = JSON.parse(localStorage.getItem("isLightTheme")) ?? true; // Default to true (light mode)
+  const theme = isLightTheme ? "light" : "dark";
+  rootElement.setAttribute("data-theme", theme);
+  if (themeToggle) {
+    themeToggle.textContent = isLightTheme ? "🌞 Light Mode" : "🌙 Dark Mode";
+  }
 
-// Load saved theme
-const storedTheme = localStorage.getItem("theme");
-if (storedTheme) {
-  html.setAttribute("data-theme", storedTheme);
-  themeToggle.textContent =
-    storedTheme === "dark" ? "🌙 Dark Mode" : "🌞 Light Mode";
-}
+  // Toggle theme on button click
+  if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+      const currentTheme = rootElement.getAttribute("data-theme");
+      const isLight = currentTheme === "light";
+      const newTheme = isLight ? "dark" : "light";
 
-// Toggle theme
-themeToggle.addEventListener("click", () => {
-  const current = html.getAttribute("data-theme");
-  const next = current === "dark" ? "light" : "dark";
-  html.setAttribute("data-theme", next);
-  localStorage.setItem("theme", next);
-  themeToggle.textContent =
-    next === "dark" ? "🌙 Dark Mode" : "🌞 Light Mode";
+      rootElement.setAttribute("data-theme", newTheme);
+      localStorage.setItem("isLightTheme", !isLight); // Save the new theme as true/false
+      themeToggle.textContent = newTheme === "light" ? "🌞 Light Mode" : "🌙 Dark Mode";
+
+      // Trigger a storage event manually for other pages to detect the change
+      window.dispatchEvent(new StorageEvent("storage", { key: "isLightTheme", newValue: JSON.stringify(!isLight) }));
+    });
+  }
 });
