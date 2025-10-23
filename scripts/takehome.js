@@ -1,19 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const calcBtn = document.getElementById("calcBtn");
-  calcBtn.addEventListener("click", calculateSalary);
+  const inputs = document.querySelectorAll("#salary, #pension, #studentLoan, #monthlySpend");
+  inputs.forEach((input) => {
+    input.addEventListener("input", updateGraph); // Update graph on input change
+  });
 });
 
 let breakdownChart;
 
-function calculateSalary() {
-  const salary = parseFloat(document.getElementById("salary").value);
+function updateGraph() {
+  const salary = parseFloat(document.getElementById("salary").value) || 0;
   const pensionPercent = parseFloat(document.getElementById("pension").value) || 0;
   const studentLoanPlan = document.getElementById("studentLoan").value;
-
-  if (isNaN(salary) || salary <= 0) {
-    alert("Please enter a valid salary.");
-    return;
-  }
+  const monthlySpend = parseFloat(document.getElementById("monthlySpend").value) || 0;
 
   // UK 2025/26 income tax bands
   const personalAllowance = 12570;
@@ -22,10 +20,14 @@ function calculateSalary() {
 
   // Pension
   const pensionableEarnings = Math.max(0, salary);
-  const pension = (pensionableEarnings * pensionPercent) / 100;
+  const annualPensionContribution = (pensionableEarnings * pensionPercent) / 100;
+  const monthlyPensionContribution = annualPensionContribution / 12;
+
+  // Save the monthly pension contribution to localStorage
+  localStorage.setItem("monthlyPensionContribution", monthlyPensionContribution);
 
   // Tax calculation
-  let taxableIncome = Math.max(0, salary - personalAllowance-pension);
+  let taxableIncome = Math.max(0, salary - personalAllowance - pension);
   let tax = 0;
   if (taxableIncome <= basicRateLimit) {
     tax = taxableIncome * 0.2;
@@ -56,7 +58,7 @@ function calculateSalary() {
     plan2: 28470,
     plan4: 32745,
     plan5: 25000,
-    postgrad: 21000
+    postgrad: 21000,
   };
   if (studentLoanPlan !== "none") {
     const threshold = loanThresholds[studentLoanPlan];
@@ -64,94 +66,99 @@ function calculateSalary() {
     studentLoan = Math.max(0, (salary - threshold) * rate);
   }
 
-  const totalDeductions = tax + ni + pension + studentLoan;
+  const totalDeductions = tax + ni + pension + studentLoan + monthlySpend * 12;
   const takeHome = salary - totalDeductions;
 
-  // Monthly values
+  // Calculate monthly take-home pay
   const monthlyTakeHome = takeHome / 12;
-  const monthlyTax = tax / 12;
-  const monthlyNI = ni / 12;
-  const monthlyPension = pension / 12;
-  const monthlyLoan = studentLoan / 12;
 
   // Format numbers with commas
-  const formatNumber = (num) => num.toLocaleString("en-GB", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const formatNumber = (num) =>
+    num.toLocaleString("en-GB", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-  // Display results
-  document.getElementById("result").innerHTML = `
+  // Display annual and monthly take-home pay and remaining disposable income
+  const resultContainer = document.getElementById("result");
+  resultContainer.innerHTML = `
     <div class="results-box">
-      <h2 class="text-lg font-bold">Results</h2>
       <p>
-        <strong>Annual Take-Home:</strong> 
+        <strong>Annual Take-Home Pay:</strong> 
         <span class="text-green-600 font-bold">£${formatNumber(takeHome)}</span>
       </p>
       <p>
-        <strong>Monthly Take-Home:</strong> 
-        <span class="text-green-600 font-semibold">£${formatNumber(monthlyTakeHome)}</span>
-      </p>
-      <hr>
-      <p class="text-sm">
-        <strong>Tax:</strong> £${formatNumber(tax)} / £${formatNumber(monthlyTax)} monthly
-      </p>
-      <p class="text-sm">
-        <strong>National Insurance:</strong> £${formatNumber(ni)} / £${formatNumber(monthlyNI)} monthly
-      </p>
-      <p class="text-sm">
-        <strong>Pension:</strong> £${formatNumber(pension)} / £${formatNumber(monthlyPension)} monthly
-      </p>
-      <p class="text-sm">
-        <strong>Student Loan:</strong> £${formatNumber(studentLoan)} / £${formatNumber(monthlyLoan)} monthly
+        <strong>Monthly Take-Home Pay:</strong> 
+        <span class="text-green-600 font-bold">£${formatNumber(monthlyTakeHome)}</span>
       </p>
     </div>
   `;
 
-  // Retrieve the footer text color from CSS variables
-  const rootStyles = getComputedStyle(document.documentElement);
-  const footerTextColor = rootStyles.getPropertyValue("--footer-text-color").trim();
-
-  // Show chart
+  // Update chart dynamically
   const chartContainer = document.getElementById("chart-container");
   chartContainer.classList.remove("hidden");
 
   const ctx = document.getElementById("breakdownChart").getContext("2d");
 
-  // If the chart already exists, update its data
   if (breakdownChart) {
-    breakdownChart.data.datasets[0].data = [tax, ni, pension, studentLoan, takeHome];
+    breakdownChart.data.datasets[0].data = [tax, ni, pension, studentLoan, monthlySpend, takeHome];
     breakdownChart.update();
   } else {
-    // Create a new chart instance
     breakdownChart = new Chart(ctx, {
       type: "doughnut",
       data: {
-        labels: ["Tax", "NI", "Pension", "Student Loan", "Take-home"],
-        datasets: [{
-          data: [tax, ni, pension, studentLoan, takeHome],
-          backgroundColor: [
-            "#ffcdd2", // Tax (Soft Pink)
-            "#c8e6c9", // NI (Soft Green)
-            "#bbdefb", // Pension (Soft Blue)
-            "#e1bee7", // Student Loan (Soft Purple)
-            "#fff9c4"  // Take-home (Soft Yellow)
-          ],
-          hoverBackgroundColor: [
-            "#ef9a9a", // Tax (Darker Pink)
-            "#a5d6a7", // NI (Darker Green)
-            "#90caf9", // Pension (Darker Blue)
-            "#ce93d8", // Student Loan (Darker Purple)
-            "#fff59d"  // Take-home (Darker Yellow)
-          ]
-        }]
+        labels: ["Tax", "NI", "Pension", "Student Loan", "Monthly Spend", "Take-home"],
+        datasets: [
+          {
+            data: [tax, ni, pension, studentLoan, takeHome],
+            backgroundColor: [
+              "#D1CCED", // Tax (red/pink)
+              "#FFFEDB", // NI (blue)
+              "#F5CBDC", // Pension (Soft Blue)
+              "#CBEBF7", // Student Loan (Soft Purple)
+              "#FFDBD1", // Monthly Spend (Soft Orange or Grey)
+              "#DCF7DE", // Take-home (Soft Yellow)
+            ],
+            hoverBackgroundColor: [
+              "#B3A1E0", // Tax (darker red/pink)
+              "#FFF5A3", // NI (darker blue)
+              "#F1A8B9", // Pension (darker Soft Blue)
+              "#9FE1EB", // Student Loan (darker Soft Purple)
+              "#FFA78A", // Monthly Spend (darker Soft Orange or Grey)
+              "#A8E6B1", // Take-home (darker Soft Yellow)
+            ],
+          },
+        ],
       },
       options: {
         plugins: {
-          legend: { position: "bottom",
+          legend: {
+            position: "bottom",
             labels: {
-              color: footerTextColor // Set the labels' color to match the footer text color
-            }
-           },
-        }
-      }
+              generateLabels: (chart) => {
+                const dataset = chart.data.datasets[0];
+                const navTextColor = getComputedStyle(document.documentElement).getPropertyValue("--nav-text-color").trim();
+                return chart.data.labels.map((label, index) => ({
+                  text: label,
+                  fillStyle: dataset.hoverBackgroundColor[index],
+                  strokeStyle: dataset.hoverBackgroundColor[index],
+                  fontColor: navTextColor,
+                  lineWidth: 1,
+                  hidden: !chart.getDataVisibility(index),
+                  index: index,
+                }));
+              },
+            },
+          },
+        },
+      },
     });
   }
+
+  // Save yearly take-home pay to localStorage
+  const yearlyTakeHome = Array.from({ length: 1 }, () => takeHome); // Assuming takeHome is annual
+  localStorage.setItem("yearlyTakeHome", JSON.stringify(yearlyTakeHome));
+
+  // Save annual take-home pay to localStorage
+  localStorage.setItem("annualTakeHome", takeHome);
+
+  // Manually trigger the storage event to notify total-position.js
+  window.dispatchEvent(new Event("storage"));
 }

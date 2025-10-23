@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Savings Over Time Calculator</title>
+    <title>Take-Home Pay Calculator</title>
     <link rel="stylesheet" href="../styles/styles.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -46,11 +46,10 @@
         <option value="plan5">Plan 5 (Started After 2023)</option>
         <option value="postgrad">Postgraduate (Master's/PhD)</option>
       </select>
-
-      <button id="calcBtn" class="tab-active w-full">
-        Calculate
-      </button>
       
+      <label for="monthlySpend" class="block mb-2 font-medium">Monthly Spend (£)</label>
+      <input id="monthlySpend" type="number" class="border rounded w-full p-2 mb-4" placeholder="e.g. 1500">
+
       <div id="result" class="mt-6 text-lg font-semibold"></div>
 
       <div id="chart-container" class="mt-8 hidden">

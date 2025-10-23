@@ -1,7 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const calcBtn = document.getElementById("calcBtn");
-  calcBtn.addEventListener("click", calculateSavings);
-});
+  const inputs = document.querySelectorAll("#initialSavings, #monthlyContribution, #interestRate, #years");
+  inputs.forEach((input) => {
+    input.addEventListener("input", calculateSavings); // Update savings on input change
+  });
+});  
 
 let savingsChart;
 
@@ -36,7 +38,6 @@ function calculateSavings() {
   // Display results
   document.getElementById("result").innerHTML = `
     <div class="results-box">
-      <h2 class="text-lg font-bold">Results</h2>
       <p>
         <strong>Total Savings After ${years} Years:</strong> 
         <span class="text-green-600 font-bold">£${formatNumber(totalSavings)}</span>
@@ -80,4 +81,11 @@ function calculateSavings() {
       }
     });
   }
+
+  // Save yearly savings data to localStorage
+  localStorage.setItem("yearlySavings", JSON.stringify(savingsOverTime));
+
+  // Save final total savings to localStorage
+  localStorage.setItem("finalSavings", totalSavings);
 }
+

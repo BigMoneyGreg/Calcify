@@ -31,6 +31,9 @@
     <!-- Main Content -->
     <main class="max-w-auto mx-2 mt-2 p-6 rounded-2xl shadow-lg transition-colors duration-300">
  
+      <label for="years" class="block mb-2 font-medium">Number of Years</label>
+      <input id="years" type="number" class="border rounded w-full p-2 mb-4" placeholder="e.g. 10">
+      
       <label for="initialSavings" class="block mb-2 font-medium">Initial Savings (£)</label>
       <input id="initialSavings" type="number" class="border rounded w-full p-2 mb-4" placeholder="e.g. 1000">
 
@@ -40,13 +43,6 @@
       <label for="interestRate" class="block mb-2 font-medium">Annual Interest Rate (%)</label>
       <input id="interestRate" type="number" class="border rounded w-full p-2 mb-4" placeholder="e.g. 5">
 
-      <label for="years" class="block mb-2 font-medium">Number of Years</label>
-      <input id="years" type="number" class="border rounded w-full p-2 mb-4" placeholder="e.g. 10">
-
-      <button id="calcBtn" class="tab-active w-full">
-        Calculate
-      </button>
-      
       <div id="result" class="mt-6 text-lg font-semibold"></div>
 
       <div id="chart-container" class="mt-8 hidden">

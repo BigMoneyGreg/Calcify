@@ -31,19 +31,17 @@
     <!-- Main Content -->
     <main class="max-w-auto mx-2 mt-2 p-6 rounded-2xl shadow-lg transition-colors duration-300">
 
+      <label for="loanTerm" class="block mb-2 font-medium">Loan Term (Years)</label>
+      <input id="loanTerm" type="number" class="border rounded w-full p-2 mb-4" placeholder="e.g. 25">
+
       <label for="loanAmount" class="block mb-2 font-medium">Loan Amount (£)</label>
       <input id="loanAmount" type="number" class="border rounded w-full p-2 mb-4" placeholder="e.g. 200000">
 
       <label for="interestRate" class="block mb-2 font-medium">Annual Interest Rate (%)</label>
       <input id="interestRate" type="number" class="border rounded w-full p-2 mb-4" placeholder="e.g. 5">
 
-      <label for="loanTerm" class="block mb-2 font-medium">Loan Term (Years)</label>
-      <input id="loanTerm" type="number" class="border rounded w-full p-2 mb-4" placeholder="e.g. 25">
-
       <label for="overpayment" class="block mb-2 font-medium">Monthly Overpayment (£)</label>
       <input id="overpayment" type="number" class="border rounded w-full p-2 mb-4" placeholder="e.g. 100">
-
-      <button id="calcBtn" class="tab-active w-full">Calculate</button>
 
       <div id="result" class="mt-6 text-lg font-semibold"></div>
 

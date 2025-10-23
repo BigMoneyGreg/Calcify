@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" class="transition-colors duration-300">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Total Positions</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../scripts/total-position.js" defer></script>
+  </head>
+  <body class="min-h-screen flex flex-col transition-colors duration-300">
+    <!-- Top Tab -->
+    <div id="top-tab" class="p-4 bg-gray-100 shadow-md flex justify-around text-center">
+      <div>
+        <p class="text-sm font-medium">Annual Take-Home Pay</p>
+        <p id="annualTakeHome" class="text-lg font-bold text-green-600">£0.00</p>
+      </div>
+      <div>
+        <p class="text-sm font-medium">Final Total Savings</p>
+        <p id="finalSavings" class="text-lg font-bold text-green-600">£0.00</p>
+      </div>
+      <div>
+        <p class="text-sm font-medium">Loan Paid Off In</p>
+        <p id="loanPaidOff" class="text-lg font-bold text-green-600">0 Years</p>
+      </div>
+      <div>
+        <p class="text-sm font-medium">Total Pension</p>
+        <p id="totalPension" class="text-lg font-bold text-green-600">£0.00</p>
+      </div>
+    </div>
+
+    <!-- Graph -->
+    <div class="p-4">
+      <canvas id="totalPositionsChart" height="100"></canvas>
+    </div>
+
+    <!-- Main Content -->
+    <main class="max-w-auto mx-2 mt-2 p-6 rounded-2xl shadow-lg transition-colors duration-300">
+      <h1 class="text-2xl font-bold mb-4">Total Positions Overview</h1>
+      <p class="text-gray-600">This page dynamically updates the total positions based on the values from the calculators.</p>
+    </main>
+  </body>
+</html>

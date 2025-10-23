@@ -31,11 +31,11 @@
     <!-- Main Content -->
     <main class="max-w-auto mx-2 mt-2 p-6 rounded-2xl shadow-lg transition-colors duration-300">
 
-      <label for="currentAge" class="block mb-2 font-medium">Current Age</label>
-      <input id="currentAge" type="number" class="border rounded w-full p-2 mb-4" placeholder="e.g. 30">
-
-      <label for="retirementAge" class="block mb-2 font-medium">Retirement Age</label>
+      <label for="retirementAge" class="block mb-2 font-medium">Retirement Age (Years)</label>
       <input id="retirementAge" type="number" class="border rounded w-full p-2 mb-4" placeholder="e.g. 65">
+
+      <label for="currentAge" class="block mb-2 font-medium">Current Age (Years)</label>
+      <input id="currentAge" type="number" class="border rounded w-full p-2 mb-4" placeholder="e.g. 30">
 
       <label for="currentSavings" class="block mb-2 font-medium">Current Pension Savings (£)</label>
       <input id="currentSavings" type="number" class="border rounded w-full p-2 mb-4" placeholder="e.g. 10000">
@@ -45,8 +45,6 @@
 
       <label for="annualGrowthRate" class="block mb-2 font-medium">Annual Growth Rate (%)</label>
       <input id="annualGrowthRate" type="number" class="border rounded w-full p-2 mb-4" placeholder="e.g. 5">
-
-      <button id="calcBtn" class="tab-active w-full">Calculate</button>
 
       <div id="result" class="mt-6 text-lg font-semibold"></div>
 
